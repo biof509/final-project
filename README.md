@@ -1,73 +1,10 @@
-# Final Project Template
+# Final Project - Biof 509 - Predicting Plasmids from Kmers Frequencies with SVM
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/py4ds/final-project/master?urlpath=lab/tree/final-project.ipynb)
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/py4ds/final-project/blob/master/final-project.ipynb)
+##Problem Statement
+Plasmids can be difficult to distinguish from chromosomes in bacterial assemblies. They often require careful study of annotation and closed circular assemblies to be confident of their status as replicon independent of the chromosome. This problem is particularly pronounced in short-read assemblies where chromosomal contigs and plasmids contigs can be of similar size. Long read assemblies can also contain  contigs of transposable elements, phage, and chromosomal regions that did not close in the assembly graph that are of similar size to typical plasmids. I hope to be able to create a model that can differentiate between chromosome and plasmid DNA based upon differential bias in sequence composition between the replicon types. 
 
-This repository contains a template for final projects.
+##Workflow
+Whole genomes and their respective plasmids were acquired from the NCBI refseq database that were labeled as complete for Parabacteroides and Bacteroides genera. Whole plasmids from incomplete assemblies were manually curated and downloaded. Data acquisition and processing to kmer frequency tables is described in the DataHandling.ipynb notebook. 
 
-## How to Use this Template
-
-### Work in Binder
-- Launch a live notebook server with the notebook using [Binder](https://beta.mybinder.org/): [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/py4ds/final-project/master?urlpath=lab/tree/final-project.ipynb)
-
-### Work in Colab
-- Launch an executable version of the notebook using [Google Colab](http://colab.research.google.com): [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/py4ds/final-project/blob/master/final-project.ipynb)
-
-### Work locally (requires local installation of [git](https://git-scm.com/) and [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html))
-- Clone the repo using a shell (below) or [GitHub Desktop](https://desktop.github.com)
-
-```sh
-git clone https://github.com/py4ds/final-project
-cd final-project
-jupyter lab
-```
-
-## Required packages
-
-The packages used to run the code in the Binder instances are listed in [requirements.txt](requirements.txt) (Note that some of these exact version numbers may not be available on your platform: you may have to tweak them for your own use).
-
-Edit the [requirements.txt](requirements.txt) file to meet the requirements of your project.
-
-To install the requirements using [pip](http://conda.pydata.org), run the following at the command-line:
-
-```sh
-$ pip install --requirement requirements.txt
-```
-
-To install the requirements using [conda](http://conda.pydata.org), run the following at the command-line:
-
-```sh
-$ conda install --file requirements.txt
-```
-
-To create a stand-alone environment named ``final-project`` with Python 3.6 and all the required package versions, run the following:
-
-```sh
-$ conda create -n final-project python=3.6 --file requirements.txt
-```
-
-You can read more about using conda environments in the [Managing Environments](http://conda.pydata.org/docs/using/envs.html) section of the conda documentation.
-
-## Git version control
-To use git in a Binder instance, you have to set up your username and email as below:
-
-```sh
-git config --global user.name "John Doe"
-git config --global user.email johndoe@example.com
-```
-
-To avoid doing this every time you use Binder, include your username and email in the [git_setup.sh](git_setup.sh) file, which will be run via [postBuild](postBuild) immediately after building the Binder instance.
-
-
-Every time you need to update the version of the [final-project.ipynb](final-project.ipynb) in your remote repo, run the following commands:
-
-```sh
-git add final-project.ipynb
-git commit -m "Update final-project.ipynb"
-git push
-```
-
-## License
-
-The code in this repository is released under the [MIT license](LICENSE-CODE). Read more at the [Open Source Initiative](https://opensource.org/licenses/MIT).
+The finalproject.ipynb notebook contains steps from importation of kmer frequency data to generation and testing of models. I initially explored trying to use articially fragmented genomes (emboss splitter) to increase my sample size and to represent some degree of fragmentation in incomplete assembly. I also tried to use pentamers, which has been shown to effective in generating models for this task (mlplasmids https://www.ncbi.nlm.nih.gov/pubmed/30383524, which had other features and used a different method for generating training contigs). Pentamers frequencies were not succesful in training a model that worked on a non-fragmented dataset. Larger kmer sizes require substantial resources and made be difficult to apply to a large dataset. Future work will involve possible feature reduction and application to Nanopore sequencing datasets. 
 

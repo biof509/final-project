@@ -1,9 +1,9 @@
 # Final Project - Biof 509 - Predicting Plasmids from Kmers Frequencies with SVM
 
-#Problem Statement
+## Problem Statement
 Plasmids can be difficult to distinguish from chromosomes in bacterial assemblies. They often require careful study of annotation and closed circular assemblies to be confident of their status as replicon independent of the chromosome. This problem is particularly pronounced in short-read assemblies where chromosomal contigs and plasmids contigs can be of similar size. Long read assemblies can also contain  contigs of transposable elements, phage, and chromosomal regions that did not close in the assembly graph that are of similar size to typical plasmids. I hope to be able to create a model that can differentiate between chromosome and plasmid DNA based upon differential bias in sequence composition between the replicon types. 
 
-#Workflow
+## Workflow
 Whole genomes and their respective plasmids were acquired from the NCBI refseq database that were labeled as complete for Parabacteroides and Bacteroides genera. Whole plasmids from incomplete assemblies were manually curated and downloaded. Data acquisition and processing to kmer frequency tables is described in the DataHandling.ipynb notebook. 
 
 The finalproject.ipynb notebook contains steps from importation of kmer frequency data to generation and testing of models. I initially explored trying to use articially fragmented genomes (emboss splitter) to increase my sample size and to represent some degree of fragmentation in incomplete assembly. I also tried to use pentamers, which has been shown to effective in generating models for this task (mlplasmids https://www.ncbi.nlm.nih.gov/pubmed/30383524, which had other features and used a different method for generating training contigs). Pentamers frequencies were not succesful in training a model that worked on a non-fragmented dataset. Larger kmer sizes require substantial resources and made be difficult to apply to a large dataset. Future work will involve possible feature reduction and application to Nanopore sequencing datasets. 

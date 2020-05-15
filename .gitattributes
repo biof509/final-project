@@ -1,0 +1,10 @@
+500kb-9mers.pkl.gz filter=lfs diff=lfs merge=lfs -text
+Alltigs-9mers.pkl.gz filter=lfs diff=lfs merge=lfs -text
+500kb-9mers.csv.gz filter=lfs diff=lfs merge=lfs -text
+Alltigs-9mers.csv.gz filter=lfs diff=lfs merge=lfs -text
+Alltigs-kmers.csv.gz filter=lfs diff=lfs merge=lfs -text
+Split500kb-kmers.csv.gz filter=lfs diff=lfs merge=lfs -text
+5mer500kb.joblib.gz filter=lfs diff=lfs merge=lfs -text
+9mer500kb.joblib.gz filter=lfs diff=lfs merge=lfs -text
+Whole5mer.joblib.gz filter=lfs diff=lfs merge=lfs -text
+Whole9mer.joblib.gz filter=lfs diff=lfs merge=lfs -text
